@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jn.rest.mapper.BrdMapper">
+<!-- select절에는 resulttype가 꼭 있어야한다.
+한줄이나, 여러줄이나, resultType은 BrdVO로 지정해준다. 
+하지만 mybatis 가 interface를 보고 한줄인지 여러줄인지확인하고 결과 값을 알려준다.
+ -->
+
+<select id="getList" resultType="com.jn.rest.vo.BrdVO"> 
+	SELECT * FROM jn_brd 
+</select>
+
+<select id="getBrd" parameterType="int" resultType="com.jn.rest.vo.BrdVO">
+	SELECT * FROM jn_brd 
+	WHERE
+		bd_id = #{bdId}
+
+</select>
+
+
+<insert id="insBrd" parameterType="BrdVO">
+	INSERT INTO jn_brd (
+	    bd_id,
+	    bd_title,
+	    bd_cont,
+	    bd_writer,
+	    bd_img
+	) VALUES (
+	    jn_seq.nextval,
+	    #{bdTitle},
+	    #{bdCont},
+	    #{bdWriter},
+	    #{bdImg}
+	)
+</insert>
+
+
+<update id="upBrd" parameterType="com.jn.rest.vo.BrdVO">
+	UPDATE jn_brd
+	SET
+	   bd_title = #{bdTitle},
+	   bd_cont = #{bdCont},
+	   bd_writer = #{bdWriter},
+	   bd_img = #{bdImg}
+	WHERE
+	   bd_id = #{bdId}
+	   
+
+</update>
+<delete id="delBrd" parameterType="int">
+	DELETE FROM jn_brd
+	WHERE
+	   bd_id = #{bdId}
+</delete>
+</mapper>
