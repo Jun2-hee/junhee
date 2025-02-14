@@ -28,7 +28,7 @@ import com.jn.rest.vo.BrdVO;
 import com.jn.rest.vo.MaguVO;
 
 import lombok.extern.slf4j.Slf4j;
-@Slf4j
+@Slf4j    //모두 나에게 풀어주겠음~~~~~!!!
 @CrossOrigin("http://localhost:5173")     //ajax의 제약사항인 CrossOrigin제약사항을 모두에게 풀어주겠다라는것을 의미한다.
 @RestController  			//@ResponseBody가 포함되어있다. @Target(value={TYPE})@Controller@ResponseBody@Retention(value=RUNTIME)@Documented
 @RequestMapping("/api")
